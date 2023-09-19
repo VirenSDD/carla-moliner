@@ -1,95 +1,123 @@
 export const json = {
-  "title": "Product Feedback Survey",
-  "showProgressBar": "top",
-  "pages": [{
-    "elements": [{
-      "type": "matrix",
-      "name": "Quality",
-      "title": "Please indicate if you agree or disagree with the following statements",
-      "columns": [{
-        "value": 1,
-        "text": "Strongly disagree"
-      }, {
-        "value": 2,
-        "text": "Disagree"
-      }, {
-        "value": 3,
-        "text": "Neutral"
-      }, {
-        "value": 4,
-        "text": "Agree"
-      }, {
-        "value": 5,
-        "text": "Strongly agree"
-      }],
-      "rows": [{
-        "value": "affordable",
-        "text": "Product is affordable"
-      }, {
-        "value": "does what it claims",
-        "text": "Product does what it claims"
-      }, {
-        "value": "better then others",
-        "text": "Product is better than other products on the market"
-      }, {
-        "value": "easy to use",
-        "text": "Product is easy to use"
-      }]
-    }, {
-      "type": "rating",
-      "name": "satisfaction",
-      "title": "How satisfied are you with the product?",
-      "mininumRateDescription": "Not satisfied",
-      "maximumRateDescription": "Completely satisfied"
-    }, {
-      "type": "rating",
-      "name": "recommend friends",
-      "visibleIf": "{satisfaction} > 3",
-      "title": "How likely are you to recommend the product to a friend or colleague?",
-      "mininumRateDescription": "Won't recommend",
-      "maximumRateDescription": "Will recommend"
-    }, {
-      "type": "comment",
-      "name": "suggestions",
-      "title": "What would make you more satisfied with the product?"
-    }]
-  }, {
-    "elements": [{
-      "type": "radiogroup",
-      "name": "price to competitors",
-      "title": "Compared to our competitors, do you feel the product is",
-      "choices": [
-        "Less expensive",
-        "Priced about the same",
-        "More expensive",
-        "Not sure"
+  "title": "Cuestionario exclusivo para Carla Moliner Serrano",
+  "showProgressBar": "bottom",
+  "showTimerPanel": "top",
+  "maxTimeToFinishPage": 25,
+  "maxTimeToFinish": 60,
+  "firstPageIsStarted": true,
+  "startSurveyText": "Empezar",
+  "pages": [
+    {
+      "elements": [
+        {
+          "type": "html",
+          "html": "Te voy a hacer un par de preguntas que deberías saber responder. <br>Introduce la contraseña y dale a <b>Empezar</b>."
+        },
+        {
+          "type": "text",
+          "name": "username",
+          "titleLocation": "hidden",
+          "isRequired": true,
+          "maxLength": 25
+        }
       ]
-    }, {
-      "type": "radiogroup",
-      "name": "price",
-      "title": "Do you feel our current price is merited by our product?",
-      "choices": [
-        "correct|Yes, the price is about right",
-        "low|No, the price is too low",
-        "high|No, the price is too high"
+    },
+    {
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "civilwar",
+          "title": "¿Sobre qué fue nuestra primera conversación?",
+          "choices": [
+            "Barbie",
+            "La La Land",
+            "Balada",
+            "Babylon"
+          ],
+          "correctAnswer": "La La Land"
+        }
       ]
-    }, {
-      "type": "multipletext",
-      "name": "pricelimit",
-      "title": "What is the... ",
-      "items": [{
-        "name": "mostamount",
-        "title": "Most amount you would pay for a product like ours"
-      }, {
-        "name": "leastamount",
-        "title": "The least amount you would feel comfortable paying"
-      }]
-    }]
-  }, {
-    "elements": [{
-      "type": "text",
-      "name": "email",
-      "title": "Thank you for taking our survey. Please enter your email address and press the \"Submit\" button."
-    }]
-  }]
+    },
+    {
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "libertyordeath",
+          "title": "¿Dónde fue nuestro primer beso?",
+          "choicesOrder": "random",
+          "choices": [
+            "En un parque",
+            "En un museo",
+            "En un cine",
+            "En una playa"
+          ],
+          "correctAnswer": "En un parque"
+        }
+      ]
+    },
+    {
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "color",
+          "title": "¿Cuál es tu color favorito?",
+          "choicesOrder": "random",
+          "choices": [
+            "Verde",
+            "Amarillo",
+            "Rojo",
+            "Azul"
+          ],
+          "correctAnswer": "Amarillo"
+        }
+      ]
+    },
+    {
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "canario",
+          "title": "¿Cómo se dice palomitas en canario?",
+          "choicesOrder": "random",
+          "choices": [
+            "Cotufas",
+            "Totufos",
+            "Baifos",
+            "Guaguas"
+          ],
+          "correctAnswer": "Cotufas"
+        }
+      ]
+    },
+    {
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "other",
+          "title": "¿Quieres salir conmigo?",
+          "choicesOrder": "random",
+          "choices": [
+            "SÍ",
+            "NO"
+          ],
+          "correctAnswer": "SÍ"
+        }
+      ]
+    }
+  ],
+  "completedHtml": "<h4>Acertaste <b>{correctAnswers}</b> de <b>{questionCount}</b> preguntas.</h4>",
+  "completedHtmlOnCondition": [
+    {
+      "expression": "{correctAnswers} == 0",
+      "html": "<h4>No has acertado ninguna pregunta :(</h4>"
+    },
+    {
+      "expression": "{correctAnswers} == {questionCount}",
+      "html": "<h4>Acertaste <b>{correctAnswers}</b> de <b>{questionCount}</b> preguntas :D</h4>"
+    },
+    {
+      "expression": "{correctAnswers} == {questionCount}",
+      "html": "<h4>Acertaste <b>{correctAnswers}</b> de <b>{questionCount}</b> preguntas :D</h4>"
+    }
+  ]
 };
